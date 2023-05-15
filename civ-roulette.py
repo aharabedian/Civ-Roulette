@@ -20,10 +20,10 @@ def load_datasets(directory: str) -> dict:
     return datasets
 
 def make_selections(civs, players, num_choices):
+    rng = random.Random(st.session_state["seed"])
     for _ in range(num_choices):
         for player_choices in players.values():
             if len(civs) > 0:
-                rng = random.Random(st.session_state["seed"])
                 selected_civ = rng.choice(civs)
                 player_choices.append(selected_civ)
                 civs.remove(selected_civ)   
